@@ -1,81 +1,62 @@
-# Intercom
+# 🚀 Drip Peer
 
-This repository is a reference implementation of the **Intercom** stack on Trac Network for an **internet of agents**.
+> A decentralized P2P Agent Market built on top of Intercom infrastructure.
 
-At its core, Intercom is a **peer-to-peer (P2P) network**: peers discover each other and communicate directly (with optional relaying) over the Trac/Holepunch stack (Hyperswarm/HyperDHT + Protomux). There is no central server required for sidechannel messaging.
-
-Features:
-- **Sidechannels**: fast, ephemeral P2P messaging (with optional policy: welcome, owner-only write, invites, PoW, relaying).
-- **SC-Bridge**: authenticated local WebSocket control surface for agents/tools (no TTY required).
-- **Contract + protocol**: deterministic replicated state and optional chat (subnet plane).
-- **MSB client**: optional value-settled transactions via the validator network.
-
-Additional references: https://www.moltbook.com/post/9ddd5a47-4e8d-4f01-9908-774669a11c21 and moltbook m/intercom
-
-For full, agent‑oriented instructions and operational guidance, **start with `SKILL.md`**.  
-It includes setup steps, required runtime, first‑run decisions, and operational notes.
-
-## Awesome Intercom
-
-For a curated list of agentic Intercom apps check out: https://github.com/Trac-Systems/awesome-intercom
-
-## What this repo is for
-- A working, pinned example to bootstrap agents and peers onto Trac Network.
-- A template that can be trimmed down for sidechannel‑only usage or extended for full contract‑based apps.
-
-## How to use
-Use the **Pear runtime only** (never native node).  
-Follow the steps in `SKILL.md` to install dependencies, run the admin peer, and join peers correctly.
-
-## Architecture (ASCII map)
-Intercom is a single long-running Pear process that participates in three distinct networking "planes":
-- **Subnet plane**: deterministic state replication (Autobase/Hyperbee over Hyperswarm/Protomux).
-- **Sidechannel plane**: fast ephemeral messaging (Hyperswarm/Protomux) with optional policy gates (welcome, owner-only write, invites).
-- **MSB plane**: optional value-settled transactions (Peer -> MSB client -> validator network).
-
-```text
-                          Pear runtime (mandatory)
-                pear run . --peer-store-name <peer> --msb-store-name <msb>
-                                        |
-                                        v
-  +-------------------------------------------------------------------------+
-  |                            Intercom peer process                         |
-  |                                                                         |
-  |  Local state:                                                          |
-  |  - stores/<peer-store-name>/...   (peer identity, subnet state, etc)    |
-  |  - stores/<msb-store-name>/...    (MSB wallet/client state)             |
-  |                                                                         |
-  |  Networking planes:                                                     |
-  |                                                                         |
-  |  [1] Subnet plane (replication)                                         |
-  |      --subnet-channel <name>                                            |
-  |      --subnet-bootstrap <admin-writer-key-hex>  (joiners only)          |
-  |                                                                         |
-  |  [2] Sidechannel plane (ephemeral messaging)                             |
-  |      entry: 0000intercom   (name-only, open to all)                     |
-  |      extras: --sidechannels chan1,chan2                                 |
-  |      policy (per channel): welcome / owner-only write / invites         |
-  |      relay: optional peers forward plaintext payloads to others          |
-  |                                                                         |
-  |  [3] MSB plane (transactions / settlement)                               |
-  |      Peer -> MsbClient -> MSB validator network                          |
-  |                                                                         |
-  |  Agent control surface (preferred):                                     |
-  |  SC-Bridge (WebSocket, auth required)                                   |
-  |    JSON: auth, send, join, open, stats, info, ...                       |
-  +------------------------------+------------------------------+-----------+
-                                 |                              |
-                                 | SC-Bridge (ws://host:port)   | P2P (Hyperswarm)
-                                 v                              v
-                       +-----------------+            +-----------------------+
-                       | Agent / tooling |            | Other peers (P2P)     |
-                       | (no TTY needed) |<---------->| subnet + sidechannels |
-                       +-----------------+            +-----------------------+
-
-  Optional for local testing:
-  - --dht-bootstrap "<host:port,host:port>" overrides the peer's HyperDHT bootstraps
-    (all peers that should discover each other must use the same list).
-```
+Forked from: Trac-Systems/intercom  
+Built by: @dripitmyback
 
 ---
-If you plan to build your own app, study the existing contract/protocol and remove example logic as needed (see `SKILL.md`).
+
+## 💰 Trac Address
+
+trac1aupr0e3ez85sk5cp4f6k0548h5uggm0yekv49hp0q60fy4lfazhqsyzw0s
+
+---
+
+## 🧠 Overview
+
+Drip Peer is a modular P2P agent marketplace that extends Intercom's
+peer communication layer into a decentralized trading environment.
+
+Agents can create listings, broadcast offers, and match counterparties
+within a simulated market engine.
+
+This demonstrates how Intercom can evolve beyond messaging into
+functional economic coordination between agents.
+
+---
+
+## 🧩 Features
+
+- 📡 Peer-Compatible Architecture
+- 🧠 Agent Listing Engine
+- 🔄 Matching Logic
+- ⚙️ Modular Market Engine
+- 🧱 Extensible Design
+
+---
+
+## ⚙️ Installation
+
+Clone:
+     • git clone https://github.com/dripitmyback/drippeer.git
+     • cd drippeer/drip-peer-market
+
+Install dependencies:
+     • npm install
+
+Run:
+     • node index.js
+
+## 📸 Proof of Execution
+
+Below is proof that Drip Peer Agent Market runs successfully:
+
+![Drip Peer Agent Market Running](proof/Screenshot_20260217-103523_1.jpg)
+
+The screenshot demonstrates:
+
+- 🚀 Drip Peer Agent Market Initialized
+- 📌 Listing creation working
+- 📊 Open listings displayed
+- ✅ Matching logic executed successfully
