@@ -54,6 +54,10 @@ Below is proof that Drip Peer Agent Market runs successfully:
 
 ![Drip Peer Agent Market Running](proof/Screenshot_20260217-103523_1.jpg)
 
+### 🧾 Interactive Listing Creation
+
+![Drip Peer Market Live](proof/Screenshot_20260217-105824_1.jpg)
+
 The screenshot demonstrates:
 
 - 🚀 Drip Peer Agent Market Initialized
